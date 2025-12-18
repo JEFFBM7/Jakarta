@@ -1,0 +1,55 @@
+/* Couleurs du drapeau indonésien : Rouge (#DC3545) et Blanc (#FFFFFF) */
+
+:root {
+  --indonesian-red: #DC3545;
+  --indonesian-white: #FFFFFF;
+}
+
+body {
+  background-color: var(--indonesian-white) !important;
+}
+
+.card {
+  background-color: var(--indonesian-white) !important;
+  border-color: var(--indonesian-red) !important;
+}
+
+.btn-primary {
+  background-color: var(--indonesian-red) !important;
+  border-color: var(--indonesian-red) !important;
+}
+
+.btn-primary:hover {
+  background-color: #b02a37 !important; /* darker red */
+  border-color: #b02a37 !important;
+}
+
+.btn-secondary {
+  background-color: var(--indonesian-white) !important;
+  border-color: var(--indonesian-red) !important;
+  color: var(--indonesian-red) !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--indonesian-red) !important;
+  color: var(--indonesian-white) !important;
+}
+
+.btn-info {
+  background-color: var(--indonesian-red) !important;
+  border-color: var(--indonesian-red) !important;
+}
+
+.btn-info:hover {
+  background-color: #b02a37 !important;
+  border-color: #b02a37 !important;
+}
+
+h1 {
+  color: var(--indonesian-red) !important;
+}
+
+.form-control:focus {
+  border-color: var(--indonesian-red) !important;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
