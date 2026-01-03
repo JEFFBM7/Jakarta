@@ -9,36 +9,67 @@
         <link rel="stylesheet" href="style.css"/>
     </h:head>
     <h:body class="bg-light">
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card shadow">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card shadow p-4 mb-4">
                         <div class="card-body">
-                            <h1 class="card-title text-center mb-4">Ajouter un Lieu</h1>
+                            <h1 class="mb-4 text-center">#{navigationController.editing ? 'Modifier un Lieu' : 'Ajouter un Lieu'}</h1>
                             <h:form>
                                 <div class="mb-3">
-                                    <h:outputLabel for="nom" value="Nom:" styleClass="form-label" />
-                                    <h:inputText id="nom" value="#{navigationController.lieuNom}" required="true" styleClass="form-control" />
+                                    <h:outputLabel for="nom" value="Nom:" class="form-label"/>
+                                    <h:inputText id="nom" value="#{navigationController.lieuNom}" class="form-control" required="true"/>
                                 </div>
                                 <div class="mb-3">
-                                    <h:outputLabel for="description" value="Description:" styleClass="form-label" />
-                                    <h:inputTextarea id="description" value="#{navigationController.lieuDescription}" required="true" styleClass="form-control" rows="3" />
+                                    <h:outputLabel for="description" value="Description:" class="form-label"/>
+                                    <h:inputTextarea id="description" value="#{navigationController.lieuDescription}" class="form-control" rows="3" required="true"/>
                                 </div>
                                 <div class="mb-3">
-                                    <h:outputLabel for="latitude" value="Latitude:" styleClass="form-label" />
-                                    <h:inputText id="latitude" value="#{navigationController.lieuLatitude}" required="true" styleClass="form-control">
-                                        <f:convertNumber type="number" />
-                                    </h:inputText>
+                                    <h:outputLabel for="latitude" value="Latitude:" class="form-label"/>
+                                    <h:inputText id="latitude" value="#{navigationController.lieuLatitude}" class="form-control" type="number" step="any" required="true"/>
                                 </div>
                                 <div class="mb-3">
-                                    <h:outputLabel for="longitude" value="Longitude:" styleClass="form-label" />
-                                    <h:inputText id="longitude" value="#{navigationController.lieuLongitude}" required="true" styleClass="form-control">
-                                        <f:convertNumber type="number" />
-                                    </h:inputText>
+                                    <h:outputLabel for="longitude" value="Longitude:" class="form-label"/>
+                                    <h:inputText id="longitude" value="#{navigationController.lieuLongitude}" class="form-control" type="number" step="any" required="true"/>
                                 </div>
-                                <div class="d-grid">
-                                    <h:commandButton value="Ajouter" action="#{navigationController.ajouterLieu}" styleClass="btn btn-primary" />
+                                <div class="d-grid gap-2">
+                                    <h:commandButton value="Ajouter" action="#{navigationController.ajouterLieuAction()}" rendered="#{not navigationController.editing}" styleClass="btn btn-primary"/>
+                                    <h:commandButton value="Modifier" action="#{navigationController.sauvegarderEdition()}" rendered="#{navigationController.editing}" styleClass="btn btn-primary"/>
+                                    <h:commandButton value="Annuler" action="#{navigationController.masquerDetails()}" rendered="#{navigationController.editing}" styleClass="btn btn-secondary"/>
+                                    <h:commandButton value="Retour à l'accueil" action="#{navigationController.retourAccueil()}" rendered="#{not navigationController.editing}" styleClass="btn btn-secondary"/>
                                 </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="card shadow p-4">
+                        <div class="card-body">
+                            <h2 class="mb-4 text-center">Liste des Lieux</h2>
+                            <h:form>
+                                <h:dataTable value="#{navigationController.lieux}" var="lieu" class="table table-striped">
+                                    <h:column>
+                                        <f:facet name="header">Nom</f:facet>
+                                        #{lieu.nom}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Description</f:facet>
+                                        #{lieu.description}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Latitude</f:facet>
+                                        #{lieu.latitude}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Longitude</f:facet>
+                                        #{lieu.longitude}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Actions</f:facet>
+                                        <h:commandButton value="Editer" action="#{navigationController.editerLieu(lieu)}" styleClass="btn btn-warning btn-sm me-1"/>
+                                        <h:commandButton value="Supprimer" action="#{navigationController.supprimerLieu(lieu.id)}" styleClass="btn btn-danger btn-sm"/>
+                                    </h:column>
+                                </h:dataTable>
                             </h:form>
                         </div>
                     </div>

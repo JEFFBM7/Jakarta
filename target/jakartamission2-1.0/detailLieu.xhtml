@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>Détails du Lieu</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="style.css"/>
+    </h:head>
+    <h:body class="bg-light">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h1 class="card-title text-center mb-4">Détails du Lieu</h1>
+                            <h:form>
+                                <div class="mb-3">
+                                    <label class="form-label"><strong>Nom :</strong></label>
+                                    <div class="form-control">#{navigationController.lieuNom}</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label"><strong>Description :</strong></label>
+                                    <div class="form-control" style="white-space:pre-wrap;">#{navigationController.lieuDescription}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label"><strong>Latitude :</strong></label>
+                                        <div class="form-control">#{navigationController.lieuLatitude}</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label"><strong>Longitude :</strong></label>
+                                        <div class="form-control">#{navigationController.lieuLongitude}</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <h:commandButton value="Retour" action="#{navigationController.retourFormulaire}" styleClass="btn btn-secondary" />
+                                    <h:button value="Accueil" outcome="index.xhtml" styleClass="btn btn-light" />
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </h:body>
+</html>
