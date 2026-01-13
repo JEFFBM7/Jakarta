@@ -1,7 +1,7 @@
-/* Couleurs du drapeau indonésien : Rouge (#DC3545) et Blanc (#FFFFFF) */
+/* Couleurs du drapeau indonésien : Bleu de nuit (#191970) et Blanc (#FFFFFF) */
 
 :root {
-  --indonesian-red: #DC3545;
+  --midnight-blue: #191970;
   --indonesian-white: #FFFFFF;
 }
 
@@ -11,45 +11,45 @@ body {
 
 .card {
   background-color: var(--indonesian-white) !important;
-  border-color: var(--indonesian-red) !important;
+  border-color: var(--midnight-blue) !important;
 }
 
 .btn-primary {
-  background-color: var(--indonesian-red) !important;
-  border-color: var(--indonesian-red) !important;
+  background-color: var(--midnight-blue) !important;
+  border-color: var(--midnight-blue) !important;
 }
 
 .btn-primary:hover {
-  background-color: #b02a37 !important; /* darker red */
-  border-color: #b02a37 !important;
+  background-color: #0d0d3a !important; /* darker midnight blue */
+  border-color: #0d0d3a !important;
 }
 
 .btn-secondary {
   background-color: var(--indonesian-white) !important;
-  border-color: var(--indonesian-red) !important;
-  color: var(--indonesian-red) !important;
+  border-color: var(--midnight-blue) !important;
+  color: var(--midnight-blue) !important;
 }
 
 .btn-secondary:hover {
-  background-color: var(--indonesian-red) !important;
+  background-color: var(--midnight-blue) !important;
   color: var(--indonesian-white) !important;
 }
 
 .btn-info {
-  background-color: var(--indonesian-red) !important;
-  border-color: var(--indonesian-red) !important;
+  background-color: var(--midnight-blue) !important;
+  border-color: var(--midnight-blue) !important;
 }
 
 .btn-info:hover {
-  background-color: #b02a37 !important;
-  border-color: #b02a37 !important;
+  background-color: #0d0d3a !important;
+  border-color: #0d0d3a !important;
 }
 
 h1 {
-  color: var(--indonesian-red) !important;
+  color: var(--midnight-blue) !important;
 }
 
 .form-control:focus {
-  border-color: var(--indonesian-red) !important;
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+  border-color: var(--midnight-blue) !important;
+  box-shadow: 0 0 0 0.2rem rgba(25, 25, 112, 0.25) !important;
 }
