@@ -4,6 +4,12 @@
     <persistence-unit name="indonesiaPU" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/indonesiadb</jta-data-source>
-
+        <class>com.jakarta2.udbl.jakartamission2.entities.Utilisateur</class>
+        <class>com.jakarta2.udbl.jakartamission2.entities.Lieu</class>
+        <class>com.jakarta2.udbl.jakartamission2.entities.Visite</class>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="eclipselink.logging.level" value="INFO"/>
+        </properties>
     </persistence-unit>
 </persistence>

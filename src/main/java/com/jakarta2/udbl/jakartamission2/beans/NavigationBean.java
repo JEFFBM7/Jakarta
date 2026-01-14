@@ -13,7 +13,6 @@ import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.io.IOException;
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -25,7 +24,6 @@ import java.util.List;
 @SessionScoped
 public class NavigationBean implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 1L;
     
     @Inject
@@ -57,6 +55,15 @@ public class NavigationBean implements Serializable {
         try {
             FacesContext.getCurrentInstance().getExternalContext()
                     .redirect("a_propos.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void voirLieux() {
+        try {
+            FacesContext.getCurrentInstance().getExternalContext()
+                    .redirect("lieu.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }

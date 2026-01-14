@@ -67,4 +67,49 @@ public class UtilisateurEntrepriseBean {
             return null;
         }
     }
+    
+    /**
+     * Authentifie un utilisateur avec son email et mot de passe
+     * @param email L'email de l'utilisateur
+     * @param password Le mot de passe en clair
+     * @return L'utilisateur si authentification réussie, null sinon
+     */
+    public Utilisateur authentifier(String email, String password) {
+        Utilisateur utilisateur = trouverUtilisateurParEmail(email);
+        if (utilisateur != null && verifierMotDePasse(password, utilisateur.getPassword())) {
+            return utilisateur;
+        }
+        return null;
+    }
+    
+    /**
+     * Vérifie si un mot de passe en clair correspond au hash stocké
+     * @param plainPassword Le mot de passe en clair
+     * @param hashedPassword Le mot de passe hashé
+     * @return true si les mots de passe correspondent
+     */
+    public boolean verifierMotDePasse(String plainPassword, String hashedPassword) {
+        if (plainPassword == null || hashedPassword == null) {
+            return false;
+        }
+        return BCrypt.checkpw(plainPassword, hashedPassword);
+    }
+    
+    /**
+     * Modifie le mot de passe d'un utilisateur
+     * @param userId L'ID de l'utilisateur
+     * @param nouveauMotDePasse Le nouveau mot de passe en clair
+     * @return true si la modification a réussi
+     */
+    @Transactional
+    public boolean modifierMotDePasse(Long userId, String nouveauMotDePasse) {
+        Utilisateur utilisateur = trouverUtilisateurParId(userId);
+        if (utilisateur != null) {
+            String hashedPassword = BCrypt.hashpw(nouveauMotDePasse, BCrypt.gensalt());
+            utilisateur.setPassword(hashedPassword);
+            em.merge(utilisateur);
+            return true;
+        }
+        return false;
+    }
 }
